@@ -21,8 +21,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const contactDetails = [
-  { icon: Mail, label: 'Email', value: 'hello@aecai.co.uk', href: 'mailto:hello@aecai.co.uk' },
-  { icon: Phone, label: 'Phone', value: '+44 (0) 800 000 0000', href: 'tel:+448000000000' },
+  { icon: Mail, label: 'Email', value: 'info@aecai.co.uk', href: 'mailto:info@aecai.co.uk' },
+  { icon: Phone, label: 'Phone', value: '+44 7477 596 226', href: 'tel:+447477596226' },
   { icon: Linkedin, label: 'LinkedIn', value: 'AECAI on LinkedIn', href: '#' },
   { icon: MapPin, label: 'Address', value: 'United Kingdom', href: null },
 ];
