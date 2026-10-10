@@ -21,7 +21,7 @@ const steps = [
   {
     number: '02',
     title: 'AI defect analysis',
-    body: 'After upload, computer vision outlines cracks and spalling on each photograph, typically within a minute or two. AI Scan, run on your firm’s own AI account, suggests other defects with type, severity and location.',
+    body: 'After upload, computer vision outlines cracks and spalling on each photograph, typically within a minute or two. AI Scan suggests other defects with type, severity and location.',
     bullets: [
       'Crack and spalling outlines drawn on the photo',
       'AI Scan for a broader, RICS-style defect set',

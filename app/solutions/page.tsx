@@ -95,10 +95,10 @@ export default function SolutionsPage() {
             </motion.div>
             <motion.div custom={1} variants={fadeUp} className="bg-white border border-ink-200 rounded-2xl p-8">
               <p className="font-heading font-semibold text-2xl text-ink-900 mb-4">
-                The pilot is free and runs on your firm&rsquo;s own AI account. Pricing on request.
+                The pilot is free, including an allowance of AI use. Pricing on request.
               </p>
               <p className="text-ink-600 leading-relaxed mb-8">
-                AECAI uses your firm&rsquo;s own Claude, Gemini or OpenAI account for its AI features. You pay that provider directly for what you use.
+                AI use is part of the service. Every plan includes a monthly allowance, so there is no separate AI account to set up.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <BrandButton href="/contact" variant="primary" showArrow>

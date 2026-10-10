@@ -41,7 +41,7 @@ const solutionBlocks = [
   {
     number: '02',
     title: 'Defect detection',
-    body: 'Computer vision outlines cracks and spalling on uploaded photographs, typically within a minute or two. AI Scan, run on your firm’s own AI account, suggests other defects with type, severity and location.',
+    body: 'Computer vision outlines cracks and spalling on uploaded photographs, typically within a minute or two. AI Scan suggests other defects with type, severity and location.',
     bullets: [
       'Crack and spalling outlines drawn on the photo',
       'AI Scan for a broader, RICS-style defect set',

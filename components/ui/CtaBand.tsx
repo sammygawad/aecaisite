@@ -11,7 +11,7 @@ interface CtaBandProps {
 
 export default function CtaBand({
   heading = 'See AECAI working.',
-  subtext = 'We\'ll show you the whole workflow, from site photographs to an approved report. The pilot is free and runs on your firm\'s own AI account.',
+  subtext = 'We\'ll show you the whole workflow, from site photographs to an approved report. The pilot is free, including an allowance of AI use.',
   primaryLabel = 'Book your demo',
   primaryHref = '/book-demo',
   secondaryLabel = 'Talk to us',
