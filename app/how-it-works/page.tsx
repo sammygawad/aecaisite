@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
-import BrandButton from '@/components/ui/BrandButton';
 import CtaBand from '@/components/ui/CtaBand';
 import { fadeUp } from '@/lib/animations';
 
@@ -10,64 +9,48 @@ const steps = [
   {
     number: '01',
     title: 'Capture on site',
-    body: 'Inspectors open AECAI on their phone or tablet and select the structure and element type. Forms are pre-built for beams, columns, decks, abutments, and more.',
+    body: 'Inspectors open AECAI on an Android phone or in the browser and record observations against your inspection form, organised by location, element and field.',
     bullets: [
-      'Hierarchical data model: Project → Structure → Element → Item → Photo',
-      'Location referencing for every observation',
-      'Offline-first — works without mobile signal',
-      'Photos auto-tagged to inspection items',
-      'Voice notes (Phase 2)',
+      'Standard Bridge, Building and Concrete forms, or build your own',
+      'AI can draft a form from one to five of your past reports',
+      'Photos tied to the element, with GPS, tags and notes',
+      'The Android app works without mobile signal (early access)',
     ],
-    // Placeholder: structural engineering site
-    image: 'https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg?auto=compress&cs=tinysrgb&w=900',
-    imageAlt: 'Inspector recording observations on a tablet at a concrete bridge',
-    imageBg: 'bg-white',
+    bg: 'bg-white',
   },
   {
     number: '02',
     title: 'AI defect analysis',
-    body: 'Once photos are uploaded, the computer vision engine processes them in seconds. It classifies defects, estimates extent, and returns annotated images for engineer review.',
+    body: 'After upload, computer vision outlines cracks and spalling on each photograph, typically within a minute or two. AI Scan, run on your firm’s own AI account, suggests other defects with type, severity and location.',
     bullets: [
-      'Detects cracking, spalling, delamination, exposed reinforcement, and staining',
-      'Severity indication and visible-extent estimation',
-      'Bounding-box and segmentation-mask annotations',
-      'Trained on CODEBRIM, CrackForest, and AECAI\'s own dataset',
+      'Crack and spalling outlines drawn on the photo',
+      'AI Scan for a broader, RICS-style defect set',
+      'Detection is an aid to the engineer, still being tested on real inspections',
     ],
-    // Placeholder: cracked concrete close up
-    image: 'https://images.pexels.com/photos/12738869/pexels-photo-12738869.jpeg?auto=compress&cs=tinysrgb&w=900',
-    imageAlt: 'Annotated photograph showing cracking and spalling in concrete',
-    imageBg: 'bg-ink-50',
+    bg: 'bg-ink-50',
   },
   {
     number: '03',
-    title: 'Engineer review and approval',
-    body: 'The platform never replaces engineering judgement. Every AI finding is presented in a review panel where the engineer can approve, amend, override, or reject.',
+    title: 'Engineer review',
+    body: 'The platform never replaces engineering judgement. The engineer accepts, rejects or adds findings, and can edit anything AI has written.',
     bullets: [
-      'Side-by-side raw and annotated photo comparison',
-      'Edit defect class and severity',
-      'Add free-text notes to any finding',
-      'Full audit trail of engineer changes',
+      'Accept, reject or add findings',
+      'Edit or override any AI-written text',
+      'Audit log of every change',
     ],
-    // Placeholder: engineer tablet site
-    image: 'https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=900',
-    imageAlt: 'Engineer reviewing AI findings on a laptop in an office',
-    imageBg: 'bg-white',
+    bg: 'bg-white',
   },
   {
     number: '04',
-    title: 'Automated report generation',
-    body: 'Once reviewed, the platform generates a structured Word or PDF inspection report — branded to your firm, aligned with industry standards, and ready to issue under your professional registration.',
+    title: 'Report and approval',
+    body: 'Report Studio drafts a Word or PDF report from the form data and findings, in your firm’s own house style. A registered engineer approves it before it is issued.',
     bullets: [
-      'Client-specific report templates',
-      'Preset commentary by defect type and severity',
-      'Figure numbering and photo embedding handled automatically',
-      'Engineer signs off as normal — liability is unchanged',
-      'Compliant with BD 63, CS 450, and CS 454',
+      'House style learnt from your previous reports',
+      'A standard draft built without AI, with optional AI writing',
+      'Watermarked DRAFT until approved',
+      'Approval needs the engineer’s multi-factor sign-in',
     ],
-    // Placeholder: drone surveying construction
-    image: 'https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?auto=compress&cs=tinysrgb&w=900',
-    imageAlt: 'Completed structural inspection report document on a desk',
-    imageBg: 'bg-ink-50',
+    bg: 'bg-ink-50',
   },
 ];
 
@@ -76,16 +59,12 @@ export default function HowItWorksPage() {
     <>
       {/* Hero */}
       <section className="relative bg-ink-900 min-h-[50vh] flex items-center overflow-hidden pt-16">
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-brand/10 blur-[100px] pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <motion.div initial="hidden" animate="visible" className="max-w-3xl">
-            <motion.span custom={0} variants={fadeUp} className="inline-block text-brand text-sm font-medium tracking-widest uppercase mb-6">
-              How It Works
-            </motion.span>
-            <motion.h1 custom={1} variants={fadeUp} className="font-heading font-bold text-5xl md:text-6xl text-white tracking-tight leading-[1.05] mb-6">
-              From paper forms to AI-assisted reports — without changing your sign-off process.
+            <motion.h1 custom={0} variants={fadeUp} className="font-heading font-bold text-5xl md:text-6xl text-white tracking-tight leading-[1.05] mb-6">
+              From paper forms to AI-assisted reports, without changing your sign-off process.
             </motion.h1>
-            <motion.p custom={2} variants={fadeUp} className="text-ink-300 text-lg md:text-xl leading-relaxed">
+            <motion.p custom={1} variants={fadeUp} className="text-ink-300 text-lg md:text-xl leading-relaxed">
               AECAI sits inside your existing inspection workflow. The engineer remains in control. The platform handles the admin.
             </motion.p>
           </motion.div>
@@ -93,18 +72,18 @@ export default function HowItWorksPage() {
       </section>
 
       {/* Step-by-step sections */}
-      {steps.map((step, idx) => (
-        <section key={step.number} className={`${step.imageBg} py-24`}>
+      {steps.map((step) => (
+        <section key={step.number} className={`${step.bg} py-24`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-80px' }}
-              className={`grid md:grid-cols-2 gap-12 items-center`}
+              className="max-w-3xl"
             >
-              <motion.div custom={0} variants={fadeUp} className={idx % 2 === 1 ? 'md:order-2' : ''}>
-                <span className="font-heading font-bold text-[8rem] leading-none text-brand/15 block -mb-4">
-                  {step.number}
+              <motion.div custom={0} variants={fadeUp}>
+                <span className="font-heading font-semibold text-sm text-ink-500 block mb-3">
+                  Step {step.number}
                 </span>
                 <h2 className="font-heading font-semibold text-4xl text-ink-900 tracking-tight mb-4">
                   {step.title}
@@ -119,35 +98,10 @@ export default function HowItWorksPage() {
                   ))}
                 </ul>
               </motion.div>
-              <motion.div custom={1} variants={fadeUp} className={idx % 2 === 1 ? 'md:order-1' : ''}>
-                <div className="rounded-2xl overflow-hidden bg-ink-200 aspect-[4/3] shadow-sm">
-                  <img
-                    src={step.image}
-                    alt={step.imageAlt}
-                    className="w-full h-full object-cover"
-                    loading={idx === 0 ? 'eager' : 'lazy'}
-                  />
-                </div>
-              </motion.div>
             </motion.div>
           </div>
         </section>
       ))}
-
-      {/* Bottom CTA strip */}
-      <section className="bg-ink-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <p className="font-heading font-semibold text-2xl text-ink-900">
-              Want to see this on your own inspection?
-            </p>
-            <p className="text-ink-600 mt-1">Free demonstration — no commitment required.</p>
-          </div>
-          <BrandButton href="/book-demo" variant="primary" size="lg" showArrow>
-            Book a Demo
-          </BrandButton>
-        </div>
-      </section>
 
       <CtaBand />
     </>
