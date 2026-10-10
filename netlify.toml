@@ -4,3 +4,19 @@ publish = ".next"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
+
+# The marketing site does no sign-in; these pages were removed in the Phase 0 hotfix.
+[[redirects]]
+from = "/login"
+to = "/contact"
+status = 301
+
+[[redirects]]
+from = "/signup"
+to = "/contact"
+status = 301
+
+[[redirects]]
+from = "/portal"
+to = "/"
+status = 301

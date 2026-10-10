@@ -57,6 +57,13 @@ export default function BrandButton({
   );
 
   if (href) {
+    if (/^(mailto:|tel:|https?:)/.test(href)) {
+      return (
+        <a href={href} className={classes}>
+          {content}
+        </a>
+      );
+    }
     return (
       <Link href={href} className={classes}>
         {content}

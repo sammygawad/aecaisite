@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowRight, LayoutDashboard } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -33,8 +33,6 @@ export default function Navbar() {
     if (href === '/') return pathname === '/';
     return pathname.startsWith(href);
   };
-
-  if (pathname === '/portal') return null;
 
   return (
     <>
@@ -82,27 +80,6 @@ export default function Navbar() {
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center gap-2">
               <Link
-                href="/login"
-                className="text-sm font-medium text-ink-600 hover:text-ink-900 transition-colors px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded"
-              >
-                Login
-              </Link>
-              <Link
-                href="/signup"
-                className="text-sm font-medium text-ink-800 border border-ink-300 hover:border-ink-900 transition-all px-4 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-              >
-                Sign Up
-              </Link>
-              <a
-                href="https://app.aecai.co.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-1.5 text-sm font-semibold text-ink-800 bg-ink-100 hover:bg-ink-200 transition-all duration-200 px-4 py-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-              >
-                <LayoutDashboard className="h-3.5 w-3.5" strokeWidth={2} />
-                Web App
-              </a>
-              <Link
                 href="/book-demo"
                 className="group inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-brand hover:bg-brand-600 transition-all duration-200 px-5 py-2 rounded-full hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
               >
@@ -140,26 +117,6 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="flex flex-col gap-3 mt-6">
-              <Link
-                href="/login"
-                className="text-center text-lg font-medium text-ink-600 border border-ink-200 rounded-full py-3 hover:border-ink-900 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-              >
-                Login
-              </Link>
-              <Link
-                href="/signup"
-                className="text-center text-lg font-medium text-ink-800 border border-ink-300 rounded-full py-3 hover:border-ink-900 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-              >
-                Sign Up
-              </Link>
-              <a
-                href="https://app.aecai.co.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-center text-lg font-semibold text-ink-800 bg-ink-100 rounded-full py-3 hover:bg-ink-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-              >
-                Web App
-              </a>
               <Link
                 href="/book-demo"
                 className="text-center text-lg font-semibold text-white bg-brand rounded-full py-3 hover:bg-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"

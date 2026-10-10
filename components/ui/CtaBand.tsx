@@ -10,8 +10,8 @@ interface CtaBandProps {
 }
 
 export default function CtaBand({
-  heading = 'Ready to see AECAI on a live project?',
-  subtext = 'Free demonstration inspection. No commitment. We\'ll show you the whole workflow on your own data.',
+  heading = 'See AECAI working.',
+  subtext = 'We\'ll show you the whole workflow, from site photographs to an approved report. The pilot is free and runs on your firm\'s own AI account.',
   primaryLabel = 'Book your demo',
   primaryHref = '/book-demo',
   secondaryLabel = 'Talk to us',

@@ -1,16 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { ClipboardList, Search, FileText, Smartphone, Eye, CircleCheck as CheckCircle, BookOpen, ChevronRight } from 'lucide-react';
 import BrandButton from '@/components/ui/BrandButton';
 import SectionHeader from '@/components/ui/SectionHeader';
-import StatCard from '@/components/ui/StatCard';
 import CtaBand from '@/components/ui/CtaBand';
 
 import { fadeUp } from '@/lib/animations';
-
-const trustItems = ['BD 63', 'CS 450', 'CS 454', 'UK GDPR', 'IStructE', 'ICE'];
 
 const problemCards = [
   {
@@ -20,61 +16,49 @@ const problemCards = [
   },
   {
     icon: Search,
-    title: 'Defect analysis',
-    body: 'Visual interpretation of cracking, spalling and delamination is subjective, inconsistent, and impossible to audit at scale.',
+    title: 'Defect descriptions',
+    body: 'Defect descriptions and condition grades vary from one inspector to the next, and are hard to check afterwards.',
   },
   {
     icon: FileText,
     title: 'Report production',
-    body: 'Engineers spend up to 70% of their inspection time writing and formatting reports — not engineering.',
+    body: 'On our co-founder’s own inspections, about 7 hours in every 10 go on the write-up: sorting photos, describing defects and typing the report.',
   },
 ];
 
-const solutionRows = [
+const solutionBlocks = [
   {
     number: '01',
-    title: 'Digital field capture',
-    body: 'Inspectors record structured observations and photos directly on site — linked to the exact element and item being inspected.',
+    title: 'Capture on site',
+    body: 'Inspectors record observations and photographs against a configurable form, organised by location, element and field.',
     bullets: [
-      'Structured forms by element type',
-      'Hierarchical data model: Project → Structure → Element → Item → Photo',
-      'Offline-first mobile application',
-      'Photos auto-linked to inspection items',
+      'Standard Bridge, Building and Concrete forms, or build your own',
+      'AI can draft a form from one to five of your past reports',
+      'Photos tied to the element, with GPS, tags and notes',
+      'Android app that works without signal (early access)',
     ],
-    // Placeholder: concrete bridge inspection
-    image: 'https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg?auto=compress&cs=tinysrgb&w=800',
-    imageAlt: 'Inspector on site at a concrete bridge',
-    imageLeft: false,
   },
   {
     number: '02',
-    title: 'Computer vision defect engine',
-    body: 'Once photos are uploaded, the CV engine processes them in seconds — classifying defects, estimating extent, and returning annotated images.',
+    title: 'Defect detection',
+    body: 'Computer vision outlines cracks and spalling on uploaded photographs, typically within a minute or two. AI Scan, run on your firm’s own AI account, suggests other defects with type, severity and location.',
     bullets: [
-      'Detects cracking, spalling, delamination, exposed reinforcement, and staining',
-      'Severity indication and extent estimation',
-      'Annotated image output for engineer review',
-      'Trained on CODEBRIM and CrackForest datasets',
+      'Crack and spalling outlines drawn on the photo',
+      'AI Scan for a broader, RICS-style defect set',
+      'The engineer accepts, rejects or adds findings',
+      'An aid to the engineer, still being tested on real inspections',
     ],
-    // Placeholder: cracked concrete close up
-    image: 'https://images.pexels.com/photos/12738869/pexels-photo-12738869.jpeg?auto=compress&cs=tinysrgb&w=800',
-    imageAlt: 'Close up of concrete cracking and spalling defects',
-    imageLeft: true,
   },
   {
     number: '03',
-    title: 'Automated report generation',
-    body: 'Structured inspection reports generated directly from field data and CV outputs — branded, compliant, and ready for engineer sign-off.',
+    title: 'Report drafting',
+    body: 'Report Studio drafts the report from the form data and findings, in your firm’s own house style, learnt from your previous reports.',
     bullets: [
-      'Structured reports from form data and CV outputs',
-      'Rules-driven preset commentary by defect type and severity',
-      'Engineer review and approval gate',
-      'Client-branded and aligned with BD 63, CS 450, CS 454',
+      'Word and PDF from the same draft',
+      'Watermarked DRAFT until approved',
+      'A registered engineer approves every report before it is issued',
+      'Audit log of every change',
     ],
-    // Placeholder: engineer tablet site
-    image: 'https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=800',
-    imageAlt: 'Engineer reviewing inspection report on tablet',
-    imageLeft: false,
   },
 ];
 
@@ -83,25 +67,38 @@ const workflowSteps = [
     number: '01',
     icon: Smartphone,
     title: 'Capture',
-    body: 'Inspector records observations and uploads photos via the mobile app.',
+    body: 'The inspector records observations and photographs against the form, on site.',
   },
   {
     number: '02',
     icon: Eye,
     title: 'Analyse',
-    body: 'CV engine identifies and classifies defects, returns annotated images.',
+    body: 'Computer vision outlines cracks and spalling. AI Scan suggests other defects.',
   },
   {
     number: '03',
     icon: CheckCircle,
     title: 'Review',
-    body: 'Engineer approves, edits, or overrides AI findings in the web portal.',
+    body: 'The engineer accepts, rejects or adds findings in the web console.',
   },
   {
     number: '04',
     icon: BookOpen,
     title: 'Report',
-    body: 'Branded inspection report generated automatically — ready to issue.',
+    body: 'Report Studio drafts the report. A registered engineer approves it before issue.',
+  },
+];
+
+const founders = [
+  {
+    name: 'Sammy Gawad',
+    role: 'Co-founder and Director',
+    body: 'Practising civil engineer who inspects bridges and reservoirs and writes these reports. BSc Construction Engineering Management, Ulster University. Built the platform.',
+  },
+  {
+    name: 'Mohamed Ragab',
+    role: 'Co-founder and Director',
+    body: 'Structural engineer turned AI researcher. MSc Digital Construction Analytics and BIM, with distinction, Ulster University. Trained the defect models.',
   },
 ];
 
@@ -109,43 +106,16 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      {/* Background: concrete bridge infrastructure photo (Pexels 1078884) */}
-      <section className="relative min-h-[88vh] flex items-center overflow-hidden pt-16">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.pexels.com/photos/1078884/pexels-photo-1078884.jpeg?auto=compress&cs=tinysrgb&w=1600"
-            alt=""
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          {/* Dark gradient overlay — heavier at left where text sits, lighter right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-ink-900/95 via-ink-900/80 to-ink-900/50" />
-          {/* Bottom fade to blend into next section */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-ink-900/60 to-transparent" />
-        </div>
-        {/* Orange accent glow top-right */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-brand/[0.12] blur-[120px] -translate-y-1/4 translate-x-1/4 pointer-events-none" />
-        {/* Subtle grid overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
+      <section className="relative min-h-[80vh] flex items-center overflow-hidden pt-16 bg-ink-900">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <motion.div initial="hidden" animate="visible" className="max-w-5xl">
-            <motion.span custom={0} variants={fadeUp} className="inline-block text-brand text-sm font-medium tracking-widest uppercase mb-6">
-              AI-Powered Structural Inspection
-            </motion.span>
-            <motion.h1 custom={1} variants={fadeUp} className="font-heading font-bold text-5xl md:text-7xl text-white tracking-tight leading-[1.05] mb-6">
-              Inspections, analysed and reported in a fraction of the time.
+            <motion.h1 custom={0} variants={fadeUp} className="font-heading font-bold text-5xl md:text-7xl text-white tracking-tight leading-[1.05] mb-6">
+              From site photograph to signed report, with the engineer in the loop.
             </motion.h1>
-            <motion.p custom={2} variants={fadeUp} className="text-ink-300 text-lg md:text-xl leading-relaxed max-w-2xl mb-10">
-              AECAI is an end-to-end AI platform for structural engineers — capturing field data, detecting concrete defects with computer vision, and generating professional inspection reports. Built for the UK and Ireland.
+            <motion.p custom={1} variants={fadeUp} className="text-ink-300 text-lg md:text-xl leading-relaxed max-w-2xl mb-10">
+              AECAI reads an inspector&rsquo;s photographs, flags the defects and drafts the structural report for a registered engineer to check and sign.
             </motion.p>
-            <motion.div custom={3} variants={fadeUp} className="flex flex-col sm:flex-row gap-4 mb-10">
+            <motion.div custom={2} variants={fadeUp} className="flex flex-col sm:flex-row gap-4 mb-10">
               <BrandButton href="/book-demo" variant="primary" size="lg" showArrow>
                 Book a Demo
               </BrandButton>
@@ -153,27 +123,10 @@ export default function HomePage() {
                 See how it works
               </BrandButton>
             </motion.div>
-            <motion.p custom={4} variants={fadeUp} className="text-ink-500 text-sm">
-              Built for engineers &nbsp;&bull;&nbsp; GDPR-compliant &nbsp;&bull;&nbsp; Engineer sign-off retained
+            <motion.p custom={3} variants={fadeUp} className="text-ink-300 text-sm">
+              Built in Belfast by two engineers &nbsp;&bull;&nbsp; AI drafts, the engineer decides and signs
             </motion.p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Trust Bar */}
-      <section className="bg-white py-12 border-b border-ink-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-            <span className="text-ink-400 text-sm font-medium tracking-wider uppercase mr-2">
-              Aligned with industry standards
-            </span>
-            {trustItems.map((item, i) => (
-              <span key={item} className="flex items-center gap-6">
-                {i > 0 && <span className="w-1.5 h-1.5 rounded-full bg-brand/60 hidden sm:inline-block" />}
-                <span className="text-ink-500 font-medium tracking-wider uppercase text-sm">{item}</span>
-              </span>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -183,9 +136,8 @@ export default function HomePage() {
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}>
             <motion.div custom={0} variants={fadeUp}>
               <SectionHeader
-                eyebrow="The Problem"
-                heading="Inspection workflows are stuck in the past."
-                subtext="Most structural inspections still rely on paper forms, manual photo sorting, and Word-document reports. The result: bottlenecks, inconsistency, and engineering time wasted on admin."
+                heading="Inspection reporting still runs on paper and Word."
+                subtext="Many structural inspections still rely on paper forms, phone photos sorted by hand and Word reports typed from scratch."
                 className="mb-12"
               />
             </motion.div>
@@ -195,7 +147,7 @@ export default function HomePage() {
                   key={card.title}
                   custom={i + 1}
                   variants={fadeUp}
-                  className="border border-ink-200 rounded-2xl p-8 hover:shadow-lg transition-shadow duration-300"
+                  className="border border-ink-200 rounded-2xl p-8"
                 >
                   <div className="bg-brand/10 text-brand rounded-xl h-12 w-12 flex items-center justify-center mb-6">
                     <card.icon className="h-6 w-6" strokeWidth={1.5} />
@@ -209,29 +161,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* The Solution */}
+      {/* What AECAI does */}
       <section className="bg-ink-50 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}>
-            <motion.div custom={0} variants={fadeUp} className="mb-16">
-              <SectionHeader eyebrow="The Solution" heading="Three layers. One workflow." />
+            <motion.div custom={0} variants={fadeUp} className="mb-12">
+              <SectionHeader heading="What AECAI does." />
             </motion.div>
-          </motion.div>
-          <div className="flex flex-col gap-24">
-            {solutionRows.map((row, i) => (
-              <motion.div
-                key={row.number}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
-                className="grid md:grid-cols-2 gap-12 items-center"
-              >
-                <motion.div custom={0} variants={fadeUp} className={row.imageLeft ? 'md:order-2' : ''}>
-                  <span className="font-heading font-bold text-7xl text-brand/20 leading-none block mb-4">{row.number}</span>
-                  <h3 className="font-heading font-semibold text-3xl text-ink-900 mb-4">{row.title}</h3>
-                  <p className="text-ink-600 text-lg leading-relaxed mb-6">{row.body}</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {solutionBlocks.map((block, i) => (
+                <motion.div
+                  key={block.number}
+                  custom={i + 1}
+                  variants={fadeUp}
+                  className="bg-white border border-ink-200 rounded-2xl p-8"
+                >
+                  <span className="font-heading font-semibold text-sm text-ink-500 block mb-3">{block.number}</span>
+                  <h3 className="font-heading font-semibold text-2xl text-ink-900 mb-4">{block.title}</h3>
+                  <p className="text-ink-600 leading-relaxed mb-6">{block.body}</p>
                   <ul className="flex flex-col gap-3">
-                    {row.bullets.map((bullet) => (
+                    {block.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-3 text-ink-700">
                         <ChevronRight className="h-4 w-4 text-brand mt-0.5 flex-shrink-0" strokeWidth={2} />
                         <span className="text-sm leading-relaxed">{bullet}</span>
@@ -239,42 +188,8 @@ export default function HomePage() {
                     ))}
                   </ul>
                 </motion.div>
-                <motion.div custom={1} variants={fadeUp} className={row.imageLeft ? 'md:order-1' : ''}>
-                  <div className="rounded-2xl overflow-hidden bg-ink-200 aspect-[4/3]">
-                    <Image
-                      src={row.image}
-                      alt={row.imageAlt}
-                      width={800}
-                      height={600}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Band */}
-      <section className="bg-ink-900 py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
-          >
-            {[
-              { value: '70% → 20%', label: 'Report-writing time per inspection' },
-              { value: '£220', label: 'Saved per inspection in engineer time' },
-              { value: '22,000+', label: 'UK road bridges in scope' },
-              { value: '76%', label: 'Of surveyed engineers open to AI inspection tools' },
-            ].map((stat, i) => (
-              <motion.div key={stat.label} custom={i} variants={fadeUp}>
-                <StatCard value={stat.value} label={stat.label} onDark />
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -284,27 +199,22 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}>
             <motion.div custom={0} variants={fadeUp} className="mb-12">
-              <SectionHeader eyebrow="The Workflow" heading="From site to signed report." />
+              <SectionHeader heading="From site to signed report." />
             </motion.div>
-            <div className="relative">
-              <div className="hidden md:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {workflowSteps.map((step, i) => (
-                  <motion.div
-                    key={step.number}
-                    custom={i + 1}
-                    variants={fadeUp}
-                    className="flex flex-col items-start md:items-center md:text-center p-6 rounded-2xl border border-ink-200 hover:shadow-lg transition-shadow duration-300 bg-white"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-brand text-white font-heading font-bold text-sm flex items-center justify-center mb-4 flex-shrink-0">
-                      {step.number}
-                    </div>
-                    <step.icon className="h-6 w-6 text-ink-400 mb-3" strokeWidth={1.5} />
-                    <h3 className="font-heading font-semibold text-xl text-ink-900 mb-2">{step.title}</h3>
-                    <p className="text-ink-600 text-sm leading-relaxed">{step.body}</p>
-                  </motion.div>
-                ))}
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {workflowSteps.map((step, i) => (
+                <motion.div
+                  key={step.number}
+                  custom={i + 1}
+                  variants={fadeUp}
+                  className="flex flex-col items-start p-6 rounded-2xl border border-ink-200 bg-white"
+                >
+                  <span className="font-heading font-semibold text-sm text-ink-500 mb-3">{step.number}</span>
+                  <step.icon className="h-6 w-6 text-ink-500 mb-3" strokeWidth={1.5} />
+                  <h3 className="font-heading font-semibold text-xl text-ink-900 mb-2">{step.title}</h3>
+                  <p className="text-ink-600 text-sm leading-relaxed">{step.body}</p>
+                </motion.div>
+              ))}
             </div>
             <motion.div custom={5} variants={fadeUp} className="mt-10">
               <BrandButton href="/how-it-works" variant="ghost" showArrow>
@@ -315,77 +225,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ROI Teaser */}
+      {/* Who built it */}
       <section className="bg-ink-50 py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}>
             <motion.div custom={0} variants={fadeUp} className="mb-12">
-              <SectionHeader eyebrow="The Numbers" heading="What AECAI saves your firm." />
-            </motion.div>
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              <motion.div custom={1} variants={fadeUp}>
-                <p className="text-ink-700 text-lg leading-relaxed">
-                  On a typical 8-hour structural inspection at a £55/hour engineer day rate, AECAI cuts the report-writing share from 70% to 20%. That&rsquo;s 4 hours and{' '}
-                  <strong className="text-ink-900">£220 saved per inspection</strong> — without changing how the engineer signs off.
-                </p>
-                <div className="mt-8">
-                  <BrandButton href="/solutions" variant="ghost" showArrow>
-                    Explore the numbers
-                  </BrandButton>
-                </div>
-              </motion.div>
-              <motion.div custom={2} variants={fadeUp}>
-                <div className="border border-ink-200 rounded-2xl p-8 bg-white">
-                  <div className="flex flex-col gap-4">
-                    <div className="flex justify-between items-center py-3 border-b border-ink-100">
-                      <span className="text-ink-600 text-sm">10 reports per month</span>
-                      <span className="font-heading font-semibold text-ink-900">£2,000 / month saved</span>
-                    </div>
-                    <div className="flex justify-between items-center py-3 border-b border-ink-100">
-                      <span className="text-ink-600 text-sm">Professional plan cost</span>
-                      <span className="font-heading font-semibold text-ink-900">£200 / month</span>
-                    </div>
-                    <div className="flex justify-between items-center py-3 bg-ink-50 rounded-xl px-4 -mx-1 mt-2">
-                      <span className="text-ink-800 font-semibold">Annual saving</span>
-                      <span className="font-heading font-bold text-brand text-2xl">£24,000</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Industry Validation */}
-      <section className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }}>
-            <motion.div custom={0} variants={fadeUp} className="mb-12">
-              <SectionHeader eyebrow="Industry Evidence" heading="Engineers want this." />
+              <SectionHeader heading="The engineer who writes the reports and the engineer who trained the models." />
             </motion.div>
             <div className="grid md:grid-cols-2 gap-6">
-              {[
-                {
-                  stat: '76%',
-                  label: 'of UK & Ireland engineers surveyed are actively considering or open to AI inspection tools.',
-                  source: 'AECAI Industry Survey, n=21, 2025',
-                },
-                {
-                  stat: '91%',
-                  label: 'of A/E/C project management professionals are aware of and accept LLMs as a working tool.',
-                  source: 'A/E/C Industry Study, n=50, 2025',
-                },
-              ].map((item, i) => (
+              {founders.map((person, i) => (
                 <motion.div
-                  key={item.stat}
+                  key={person.name}
                   custom={i + 1}
                   variants={fadeUp}
-                  className="border border-ink-200 rounded-2xl p-10"
+                  className="bg-white border border-ink-200 rounded-2xl p-8"
                 >
-                  <span className="font-heading font-bold text-7xl text-brand leading-none block mb-4">{item.stat}</span>
-                  <p className="text-ink-800 text-lg leading-relaxed mb-4">{item.label}</p>
-                  <p className="text-ink-400 text-sm">Source: {item.source}</p>
+                  <h3 className="font-heading font-semibold text-xl text-ink-900">{person.name}</h3>
+                  <p className="text-ink-500 text-sm mb-4">{person.role}</p>
+                  <p className="text-ink-700 leading-relaxed">{person.body}</p>
                 </motion.div>
               ))}
             </div>

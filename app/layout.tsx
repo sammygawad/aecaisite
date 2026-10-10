@@ -5,17 +5,17 @@ import ConditionalLayout from '@/components/layout/ConditionalLayout';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aecai.co.uk'),
-  title: 'AECAI — AI-Powered Structural Inspection Platform',
-  description: 'AECAI is an end-to-end AI platform for structural engineers — capturing field data, detecting concrete defects with computer vision, and generating professional inspection reports. Built for the UK and Ireland.',
+  title: 'AECAI | From site photograph to signed report',
+  description: 'AECAI reads an inspector\'s photographs, flags the defects and drafts the structural report for a registered engineer to check and sign. Built in Belfast.',
   openGraph: {
-    title: 'AECAI — AI-Powered Structural Inspection Platform',
-    description: 'AI-powered structural inspection, defect detection, and automated report generation for UK and Ireland engineering firms.',
+    title: 'AECAI | From site photograph to signed report',
+    description: 'AECAI reads an inspector\'s photographs, flags the defects and drafts the structural report for a registered engineer to check and sign.',
     images: [{ url: '/Images/AECAI Logo.png' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AECAI — AI-Powered Structural Inspection Platform',
-    description: 'AI-powered structural inspection, defect detection, and automated report generation for UK and Ireland engineering firms.',
+    title: 'AECAI | From site photograph to signed report',
+    description: 'AECAI reads an inspector\'s photographs, flags the defects and drafts the structural report for a registered engineer to check and sign.',
   },
 };
 
