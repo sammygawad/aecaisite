@@ -24,7 +24,7 @@ const dataCards = [
   {
     icon: Globe,
     title: 'AI processing can happen elsewhere',
-    body: 'Computer vision runs on cloud GPUs, and AI Scan and AI writing run with the AI provider your firm chooses. These can process data outside the UK and EU.',
+    body: 'Computer vision runs on cloud GPUs, and AI Scan and AI writing use large language models from Anthropic, Google or OpenAI. These can process data outside the UK and EU.',
   },
   {
     icon: Clock,
@@ -69,7 +69,7 @@ export default function TechnologyPage() {
                 Computer vision for cracks and spalling.
               </h2>
               <p className="text-ink-600 text-lg leading-relaxed mb-6">
-                AECAI&rsquo;s computer vision looks for cracks and spalling on site photographs and draws each one as an outline for the engineer to check. A separate AI Scan, run on your firm&rsquo;s own Claude, Gemini or OpenAI account, suggests a broader, RICS-style set of defects with type, severity and location.
+                AECAI&rsquo;s computer vision looks for cracks and spalling on site photographs and draws each one as an outline for the engineer to check. A separate AI Scan suggests a broader, RICS-style set of defects with type, severity and location.
               </p>
               <ul className="flex flex-col gap-3 mb-6">
                 {[
@@ -106,7 +106,7 @@ export default function TechnologyPage() {
                 Reports in your firm&rsquo;s own house style.
               </h2>
               <p className="text-ink-600 text-lg leading-relaxed mb-6">
-                Report Studio builds a standard draft from the form data and findings without using AI. Your engineers can then have AI rewrite or extend it, using your firm&rsquo;s own AI account. AECAI learns your house style from your previous reports, without copying their findings.
+                Report Studio builds a standard draft from the form data and findings without using AI. Your engineers can then have AI rewrite or extend it. AECAI learns your house style from your previous reports, without copying their findings.
               </p>
               <p className="text-ink-600 leading-relaxed mb-6">
                 A registered engineer approves every report before it is issued. The platform drafts reports; engineers own them.
@@ -114,7 +114,7 @@ export default function TechnologyPage() {
               <ul className="flex flex-col gap-3">
                 {[
                   'Standard draft built without AI',
-                  'Optional AI writing on your own AI account',
+                  'Optional AI writing, included in the service',
                   'House style learnt from your past reports',
                   'Edit or override any text before approval',
                   'Word and PDF, watermarked DRAFT until approved',
